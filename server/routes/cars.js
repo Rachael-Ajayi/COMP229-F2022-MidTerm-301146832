@@ -1,7 +1,11 @@
+// FILENAME: COMP 229 
+
+
 // modules required for routing
 let express = require("express");
 let router = express.Router();
 let mongoose = require("mongoose");
+const { updateOne } = require("../models/cars");
 
 // define the car model
 let car = require("../models/cars");
@@ -15,7 +19,7 @@ router.get("/", (req, res, next) => {
     } else {
       res.render("cars/index", {
         title: "Cars",
-        cars: cars
+        cars: cars,
       });
     }
   });
@@ -23,8 +27,19 @@ router.get("/", (req, res, next) => {
 
 //  GET the Car Details page in order to add a new Car
 router.get("/add", (req, res, next) => {
-  
-   res.render("cars/index", { title: "Add Cars" });
+ 
+  car.find((err, cars) => {
+      if (err) {
+          return console.error(err);
+          res.end(err);
+      } else {
+          res.render("cars/add", {
+              title: "Cars",
+              cars: cars,
+          });
+      }
+  });
+
 });
 
 // POST process the Car  Details page and create a new Car  - CREATE
@@ -53,39 +68,42 @@ router.post("/add", (req, res, next) => {
 
 
 // GET the Car Details page in order to edit an existing Car
-router.get("/:id", (req, res, next) => {
-  
+router.get("/details/:id", (req, res, next) => {
   let id = req.params.id;
 
-  car.findById(id,(err, carToEdit) =>{
-    if (err) 
+  car.findById(id,(err,carTodetail) => {
+    if(err)
     {
       console.log(err);
       res.end(err);
+
     }
-    else 
-    {
-      //show edit view
-      res.redirect('/cars/details',{ title: "Edits the Cars", cars: carToEdit })
+    else{
+      res.render('cars/details',{title:'Edit Car', cars: carTodetail})
     }
   });
 });
+  
+  /*****************
+   * ADD CODE HERE *
+   *****************/
 
 
 // POST - process the information passed from the details form and update the document
-router.post("/:id", (req, res, next) => {
-  
-   let id = req.params.id;
+router.post("/details/:id", (req, res, next) => {
+  let id = req.params.id
 
-   let updatedCar = car({
-    "_id" : id,
-    "Carname" : req.body.Carname,
-    "Category" : req.body.Category,
-    "Carmodel" : req.body.Carmodel,
-    "Price" : req.body.Price
-   });
+  let updateCar = car ({
+    _id: id,
+    Carname: req.body.Carname,
+    Category : req.body.Category,
+    Carmodel : req.body.Carmodel,
+    Price : req.body.Price
+    
 
-   car.updateOne({_id : id}, updatedCar, (err) => {
+  });
+
+   car.updateOne({_id : id}, updateOne, (err) => {
     if (err) 
     {
       console.log(err);
@@ -104,7 +122,7 @@ router.get("/delete", (req, res, next) => {
 
   let carName = req.params.Carname;
 
-  car.remove({Carname : carName}, (err) =>{
+  car.remove({Price: {$gt:10000}}, (err) =>{
     if (err) 
     {
       console.log(err);

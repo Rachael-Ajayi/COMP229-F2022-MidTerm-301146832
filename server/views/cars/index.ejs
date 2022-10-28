@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-offset-1 col-md-10">
       <h3>Favourite Cars List</h3>
-      <a href="server\views\cars\add" class="btn btn-primary"
+      <a href="/cars/add" class="btn btn-primary"
         ><i class="fa fa-plus"></i> Add a car</a
       >
       <br />
@@ -44,7 +44,7 @@
         </table>
       </div>
 
-      <a href="/cars/delete" class="btn btn-warning btn-sm">
+      <a href="/cars/delete<%=cars.Price%>" class="btn btn-warning btn-sm">
         <i class="fas fa-trash-alt"></i> Delete</a>
     </main>
       <div class="col-md-offset-1 col-md-10 text-center">
