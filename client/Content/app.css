@@ -1,5 +1,32 @@
 /* Custom CSS goes here */
 body {
   padding-bottom: 70px;
+ 
   }
 
+#home
+{
+  font-size: 60px;
+  font-family: 'Faster One', cursive;
+  text-align: center;
+  
+
+}
+#list
+{
+  font-family: 'Bungee Shade', cursive;
+  font-size: 45px;
+  
+}
+
+nav
+{
+  background:linear-gradient( 120deg, #000000, #ffffff81);
+}
+
+
+img
+{
+width: 1320px;
+height: 500px;
+}
