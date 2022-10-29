@@ -1,3 +1,8 @@
+// File name: COMP229-F2022-MidTerm-301146832
+// Author's Name: Rachael Ajayi
+// Student ID: 301146832
+// Web App Name: Favourite Car List
+
 let app = require('./server/config/app');
 let debug = require('debug')('comp308-w2019-midterm:server');
 let http = require('http');

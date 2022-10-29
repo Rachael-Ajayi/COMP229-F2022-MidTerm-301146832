@@ -1,3 +1,9 @@
+// File name: COMP229-F2022-MidTerm-301146832
+// Author's Name: Rachael Ajayi
+// Student ID: 301146832
+// Web App Name: Favourite Car List
+
+
 // moddules for node and express
 let createError = require("http-errors");
 let express = require("express");

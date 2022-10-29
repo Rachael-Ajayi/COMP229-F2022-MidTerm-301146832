@@ -1,3 +1,8 @@
+// File name: COMP229-F2022-MidTerm-301146832
+// Author's Name: Rachael Ajayi
+// Student ID: 301146832
+// Web App Name: Favourite Car List
+
 /* custom JS goes here */
 
 /* pagination code from http://www.bootply.com/lxa0FF9yhw */
