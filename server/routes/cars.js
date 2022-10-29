@@ -105,18 +105,17 @@ router.post("/details/:id", (req, res, next) => {
 
   });
 
-   car.updateOne({_id : id}, updateOne, (err) => {
-    if (err) 
-    {
-      console.log(err);
-      res.end(err);
-    }
-    else 
-    {
-     //refresh the car list
-     res.redirect('/cars')
-    }
-   });
+car.updateOne({_id: id}, updateCar,(err) => {
+  if(err)
+  {
+    console.log(err);
+    res.end(err);
+  }else{
+     res.redirect('/cars');
+  }
+
+});
+
 });
 
 // GET - process the delete
